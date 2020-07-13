@@ -1,0 +1,388 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <style>
+            .ui-widget .ui-widget {
+                font-size: 12px !important;
+            }
+            td{vertical-align: top;}
+        </style>
+    </h:head>
+    <f:event listener="#{invoiceBean.init()}" type="preRenderView" />
+    <h:body>
+        <f:view>
+            <h:form>
+                <p:growl/>
+                <p:panel header="System To System Invoice">
+                    <h:panelGrid columns="3">
+                        <p:fieldset legend="Seller Information">
+                            <p:panelGrid columns="2" id="pnl_seller">
+                                <p:outputLabel value="Seller TIN" for="tin"/>
+                                <h:inputText value="#{invoiceBean.sellerDetails.tin}" id="tin" required="true"/>
+                                <p:outputLabel value="Seller NIN/BRN" for="ninBrn"/>
+                                <h:inputText value="#{invoiceBean.sellerDetails.ninBrn}" id="ninBrn"/>
+                                <p:outputLabel value="Legal Name" for="legalName"/>
+                                <h:inputText value="#{invoiceBean.sellerDetails.legalName}" id="legalName" required="true"/>
+                                <p:outputLabel value="Business Name" for="businessName"/>
+                                <h:inputText value="#{invoiceBean.sellerDetails.businessName}" id="businessName"/>
+                                <p:outputLabel value="Seller Address" for="address"/>
+                                <h:inputText value="#{invoiceBean.sellerDetails.address}" id="address"/>
+                                <p:outputLabel value="Mobile Phone" for="mobilePhone"/>
+                                <h:inputText value="#{invoiceBean.sellerDetails.mobilePhone}" id="mobilePhone"/>
+                                <p:outputLabel value="Line Phone" for="linePhone"/>
+                                <h:inputText value="#{invoiceBean.sellerDetails.linePhone}" id="linePhone"/>
+                                <p:outputLabel value="Seller Email" for="emailAddress"/>
+                                <h:inputText value="#{invoiceBean.sellerDetails.emailAddress}" id="emailAddress" required="true"/>
+                                <p:outputLabel value="Place Of Business" for="placeOfBusiness"/>
+                                <h:inputText value="#{invoiceBean.sellerDetails.placeOfBusiness}" id="placeOfBusiness"/>
+                                <p:outputLabel value="Refernence Number" for="referenceNo"/>
+                                <h:inputText value="#{invoiceBean.sellerDetails.referenceNo}" id="referenceNo"/>
+                            </p:panelGrid>
+                        </p:fieldset>
+                        <p:fieldset legend="Basic Information">
+                            <p:panelGrid columns="2" id="pnl_basic">
+                                <p:outputLabel value="Invoice Number" for="invoiceNo"/>
+                                <h:inputText value="#{invoiceBean.basicInformation.invoiceNo}" id="invoiceNo"/>
+                                <p:outputLabel value="Anti Fake Code" for="antifakeCode"/>
+                                <h:inputText value="#{invoiceBean.basicInformation.antifakeCode}" id="antifakeCode"/>
+                                <p:outputLabel value="Device No" for="deviceNo"/>
+                                <h:inputText value="#{invoiceBean.basicInformation.deviceNo}" id="deviceNo" required="true"/>
+                                <p:outputLabel value="Issued Date" for="issuedDate"/>
+                                <h:inputText value="#{invoiceBean.basicInformation.issuedDate}" id="issuedDate" required="true"/>
+                                <p:outputLabel value="Operator" for="operator"/>
+                                <h:inputText value="#{invoiceBean.basicInformation.operator}" id="operator" required="true"/>
+                                <p:outputLabel value="Currency" for="currency"/>
+                                <h:inputText value="#{invoiceBean.basicInformation.currency}" id="currency" required="true"/>
+                                <p:outputLabel value="Original Invoice ID" for="oriInvoiceId"/>
+                                <h:inputText value="#{invoiceBean.basicInformation.oriInvoiceId}" id="oriInvoiceId"/>
+                                <p:outputLabel value="Invoice Type" for="invoiceType"/>
+                                <p:selectOneMenu id="invoiceType" value="#{invoiceBean.basicInformation.invoiceType}" style="width:125px" required="true">
+                                    <f:selectItem itemLabel="Invoice" itemValue="1" />
+                                    <f:selectItem itemLabel="Credit" itemValue="2" />
+                                    <f:selectItem itemLabel="Debit" itemValue="4" />
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Invoice Kind" for="invoiceKind"/>
+                                <p:selectOneMenu id="invoiceKind" value="#{invoiceBean.basicInformation.invoiceKind}" style="width:125px" required="true">
+                                    <f:selectItem itemLabel="Invoice" itemValue="1" />
+                                    <f:selectItem itemLabel="Receipt" itemValue="2" />
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Data Source" for="dataSource"/>
+                                <p:selectOneMenu id="dataSource" value="#{invoiceBean.basicInformation.dataSource}" style="width:125px" required="true">
+                                    <f:selectItem itemLabel="System to System (Web Service API)" itemValue="103" />
+                                    <f:selectItem itemLabel="EFD" itemValue="101" />
+                                    <f:selectItem itemLabel="CS" itemValue="102" />
+                                    <f:selectItem itemLabel="BS" itemValue="104" />
+                                </p:selectOneMenu>
+                            </p:panelGrid>
+                        </p:fieldset>
+                        <p:fieldset legend="Buyer Details">
+                            <p:panelGrid columns="4" id="pnl_buyer">
+                                <p:outputLabel value="Buyer Tin" for="buyerTin"/>
+                                <h:inputText value="#{invoiceBean.buyerDetails.buyerTin}" id="buyerTin"/>
+                                <p:outputLabel value="Buyer NIN/BRN" for="buyerNinBrn"/>
+                                <h:inputText value="#{invoiceBean.buyerDetails.buyerNinBrn}" id="buyerNinBrn"/>
+                                <p:outputLabel value="Buyer Passport Num" for="buyerPassportNum"/>
+                                <h:inputText value="#{invoiceBean.buyerDetails.buyerPassportNum}" id="buyerPassportNum"/>
+                                <p:outputLabel value="Buyer Legal Name" for="buyerLegalName"/>
+                                <h:inputText value="#{invoiceBean.buyerDetails.buyerLegalName}" id="buyerLegalName"/>
+                                <p:outputLabel value="Buyer Business Name" for="buyerBusinessName"/>
+                                <h:inputText value="#{invoiceBean.buyerDetails.buyerBusinessName}" id="buyerBusinessName"/>
+                                <p:outputLabel value="Buyer Address" for="buyerAddress"/>
+                                <h:inputText value="#{invoiceBean.buyerDetails.buyerAddress}" id="buyerAddress"/>
+                                <p:outputLabel value="Buyer Email" for="buyerEmail"/>
+                                <h:inputText value="#{invoiceBean.buyerDetails.buyerEmail}" id="buyerEmail"/>
+                                <p:outputLabel value="Buyer Mobile Phone" for="buyerMobilePhone"/>
+                                <h:inputText value="#{invoiceBean.buyerDetails.buyerMobilePhone}" id="buyerMobilePhone"/>
+                                <p:outputLabel value="Buyer Line Phone" for="buyerLinePhone"/>
+                                <h:inputText value="#{invoiceBean.buyerDetails.buyerLinePhone}" id="buyerLinePhone"/>
+                                <p:outputLabel value="Buyer Place Of Business Phone" for="buyerPlaceOfBusi"/>
+                                <h:inputText value="#{invoiceBean.buyerDetails.buyerPlaceOfBusi}" id="buyerPlaceOfBusi"/>
+                                <p:outputLabel value="Buyer Type" for="buyerType"/>
+                                <p:selectOneMenu id="buyerType" value="#{invoiceBean.buyerDetails.buyerType}" style="width:125px" required="true">
+                                    <f:selectItem itemLabel="B2B or B2G" itemValue="0" />
+                                    <f:selectItem itemLabel="B2C" itemValue="1" />
+                                    <f:selectItem itemLabel="Foreigner" itemValue="2" />
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Buyer Citizenship" for="buyerCitizenship"/>
+                                <h:inputText value="#{invoiceBean.buyerDetails.buyerCitizenship}" id="buyerCitizenship"/>
+                                <p:outputLabel value="Buyer Sector" for="buyerSector"/>
+                                <h:inputText value="#{invoiceBean.buyerDetails.buyerSector}" id="buyerSector"/>
+                                <p:outputLabel value="Buyer Reference Number" for="buyerReferenceNo"/>
+                                <h:inputText value="#{invoiceBean.buyerDetails.buyerReferenceNo}" id="buyerReferenceNo"/>
+                            </p:panelGrid>
+                        </p:fieldset>
+                    </h:panelGrid>
+                    <p:fieldset legend="Goods Details">
+                        <h:panelGrid columns="10" id="items">
+                            <p:outputLabel value="Item Name" for="item"/>
+                            <h:inputText value="#{invoiceBean.item.item}" id="item" required="true"/>
+                            <p:outputLabel value="Item Code" for="itemCode"/>
+                            <h:inputText value="#{invoiceBean.item.itemCode}" id="itemCode" required="true"/>
+                            <p:outputLabel value="Quantity" for="qty"/>
+                            <h:inputText value="#{invoiceBean.item.qty}" id="qty"/>
+                            <p:outputLabel value="Unit Of Measure" for="unitOfMeasure"/>
+                            <p:selectOneMenu id="unitOfMeasure" value="#{invoiceBean.item.unitOfMeasure}" style="width:125px" required="true">
+                                <f:selectItem itemLabel="kg" itemValue="101" />
+                                <f:selectItem itemLabel="pack" itemValue="102" />
+                                <f:selectItem itemLabel="piece" itemValue="103" />
+                                <f:selectItem itemLabel="meter" itemValue="104" />
+                                <f:selectItem itemLabel="stick" itemValue="105" />
+                                <f:selectItem itemLabel="litre" itemValue="106" />
+                                <f:selectItem itemLabel="day of access" itemValue="107" />
+                                <f:selectItem itemLabel="minute" itemValue="108" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Unit Price" for="unitPrice"/>
+                            <h:inputText value="#{invoiceBean.item.unitPrice}" id="unitPrice"/>
+                            <p:outputLabel value="Total Price" for="total"/>
+                            <h:inputText value="#{invoiceBean.item.total}" id="total" required="true"/>
+                            <p:outputLabel value="Tax Rate" for="taxRate"/>
+                            <h:inputText value="#{invoiceBean.item.taxRate}" id="taxRate" required="true"/>
+                            <p:outputLabel value="Tax Amount" for="tax"/>
+                            <h:inputText value="#{invoiceBean.item.tax}" id="tax" required="true"/>
+                            <p:outputLabel value="Discount Total" for="discountTotal"/>
+                            <h:inputText value="#{invoiceBean.item.discountTotal}" id="discountTotal"/>
+                            <p:outputLabel value="Discount Tax Rate" for="discountTaxRate"/>
+                            <h:inputText value="#{invoiceBean.item.discountTaxRate}" id="discountTaxRate"/>
+                            <p:outputLabel value="Order Number" for="orderNumber"/>
+                            <h:inputText value="#{invoiceBean.item.orderNumber}" id="orderNumber" required="true"/>
+                            <p:outputLabel value="Discount Flag" for="discountFlag"/>
+                            <p:selectOneMenu id="discountFlag" value="#{invoiceBean.item.discountFlag}" style="width:125px" required="true">
+                                <f:selectItem itemLabel="discount amount" itemValue="0" />
+                                <f:selectItem itemLabel="discount good" itemValue="1" />
+                                <f:selectItem itemLabel="non-discount good" itemValue="2" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Deemed Flag" for="deemedFlag"/>
+                            <p:selectOneMenu id="deemedFlag" value="#{invoiceBean.item.deemedFlag}" style="width:125px" required="true">
+                                <f:selectItem itemLabel="deemed" itemValue="1" />
+                                <f:selectItem itemLabel="not deemed" itemValue="2" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Excise Flag" for="exciseFlag"/>
+                            <p:selectOneMenu id="exciseFlag" value="#{invoiceBean.item.exciseFlag}" style="width:125px" required="true">
+                                <f:selectItem itemLabel="excise" itemValue="1" />
+                                <f:selectItem itemLabel="not excise" itemValue="2" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Category Id" for="categoryId"/>
+                            <h:inputText value="#{invoiceBean.item.categoryId}" id="categoryId"/>
+                            <p:outputLabel value="Category Name" for="categoryName"/>
+                            <h:inputText value="#{invoiceBean.item.categoryName}" id="categoryName"/>
+                            <p:outputLabel value="Goods Category Id" for="goodsCategoryId"/>
+                            <h:inputText value="#{invoiceBean.item.goodsCategoryId}" id="goodsCategoryId" required="true"/>
+                            <p:outputLabel value="Goods Category Name" for="goodsCategoryName"/>
+                            <h:inputText value="#{invoiceBean.item.goodsCategoryName}" id="goodsCategoryName" required="true"/>
+                            <p:outputLabel value="Excise Rate" for="exciseRate"/>
+                            <h:inputText value="#{invoiceBean.item.exciseRate}" id="exciseRate"/>
+                            <p:outputLabel value="Excise Rule" for="exciseRule"/>
+                            <p:selectOneMenu id="exciseRule" value="#{invoiceBean.item.exciseRule}" style="width:125px">
+                                <f:selectItem itemLabel="Select One" itemValue="" />
+                                <f:selectItem itemLabel="Calculated by tax rate" itemValue="1" />
+                                <f:selectItem itemLabel="Calculated by Quantity" itemValue="2" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Excise Tax" for="exciseTax"/>
+                            <h:inputText value="#{invoiceBean.item.exciseTax}" id="exciseTax"/>
+                            <p:outputLabel value="Pack" for="pack"/>
+                            <h:inputText value="#{invoiceBean.item.pack}" id="pack"/>
+                            <p:outputLabel value="Stick" for="stick"/>
+                            <h:inputText value="#{invoiceBean.item.stick}" id="stick"/>
+                            <p:outputLabel value="Excise Unit" for="exciseUnit"/>
+                            <p:selectOneMenu id="exciseUnit" value="#{invoiceBean.item.exciseUnit}" style="width:125px">
+                                <f:selectItem itemLabel="Select One" itemValue="" />
+                                <f:selectItem itemLabel="per stick" itemValue="101" />
+                                <f:selectItem itemLabel="per litre" itemValue="102" />
+                                <f:selectItem itemLabel="per kg" itemValue="103" />
+                                <f:selectItem itemLabel="per user per day of access" itemValue="104" />
+                                <f:selectItem itemLabel="per minute" itemValue="105" />
+                                <f:selectItem itemLabel="per 1,000sticks" itemValue="106" />
+                                <f:selectItem itemLabel="per 50kgs" itemValue="107" />
+                                <f:selectItem itemLabel="-" itemValue="108" />
+                                <f:selectItem itemLabel="per 1 g" itemValue="109" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Excise Currency" for="exciseCurrency"/>
+                            <h:inputText value="#{invoiceBean.item.exciseCurrency}" id="exciseCurrency"/>
+                            <p:outputLabel value="Excise Rate Name" for="exciseRateName"/>
+                            <h:inputText value="#{invoiceBean.item.exciseRateName}" id="exciseRateName"/>
+                        </h:panelGrid>
+                        <br/>
+                        <p:commandButton value="Add Item" action="#{invoiceBean.add_item()}" process="@this,@parent" update="@parent,items_table" />
+                        <br/>
+                        <p:dataTable value="#{invoiceBean.goodsDetails}" var="goods" id="items_table">
+                            <p:column headerText="Item Name">
+                                <h:outputText value="#{goods.item}" />
+                            </p:column>
+                            <p:column headerText="Item Code">
+                                <h:outputText value="#{goods.itemCode}" />
+                            </p:column>
+                            <p:column headerText="Item Quantity">
+                                <h:outputText value="#{goods.qty}" />
+                            </p:column>
+                            <p:column headerText="Amount">
+                                <h:outputText value="#{goods.total}" />
+                            </p:column>
+                            <p:column headerText="Tax Amount">
+                                <h:outputText value="#{goods.tax}" />
+                            </p:column>
+                            <p:column>
+                                <p:commandLink value="Remove" action="#{invoiceBean.remove_item(goods)}" process="@this" update="@form:items,@parent,items_table"/> | 
+                                <p:commandLink value="Edit" action="#{invoiceBean.edit_item(goods)}" process="@this" update="@form:items,@parent,items_table"/>
+                            </p:column>
+                        </p:dataTable>
+
+                    </p:fieldset>
+                    <p:fieldset legend="Tax Details">
+                        <h:panelGrid columns="10" id="tax_detail">
+                            <p:outputLabel value="Tax Category" for="taxCategory"/>
+                            <h:inputText value="#{invoiceBean.taxdetail.taxCategory}" id="taxCategory" required="true"/>
+                            <p:outputLabel value="Net Amount" for="netAmount2"/>
+                            <h:inputText value="#{invoiceBean.taxdetail.netAmount}" id="netAmount2" required="true"/>
+                            <p:outputLabel value="Tax Rate" for="taxRate2"/>
+                            <h:inputText value="#{invoiceBean.taxdetail.taxRate}" id="taxRate2" required="true"/>
+                            <p:outputLabel value="Tax Amount" for="taxAmount2"/>
+                            <h:inputText value="#{invoiceBean.taxdetail.taxAmount}" id="taxAmount2" required="true"/>
+                            <p:outputLabel value="Gross Amount" for="grossAmount2"/>
+                            <h:inputText value="#{invoiceBean.taxdetail.grossAmount}" id="grossAmount2" required="true"/>
+                            <p:outputLabel value="Excise Unit" for="exciseUnit2"/>
+                            <h:inputText value="#{invoiceBean.taxdetail.exciseUnit}" id="exciseUnit2"/>
+                            <p:outputLabel value="Excise Currency" for="exciseCurrency2"/>
+                            <h:inputText value="#{invoiceBean.taxdetail.exciseCurrency}" id="exciseCurrency2"/>
+                            <p:outputLabel value="Tax Rate Name" for="taxRateName"/>
+                            <h:inputText value="#{invoiceBean.taxdetail.taxRateName}" id="taxRateName" required="true"/>
+                        </h:panelGrid>
+                        <br/>
+                        <p:commandButton value="Add Tax Details" action="#{invoiceBean.add_taxdetail()}" process="@this,@parent" update="tax_detail,@parent,tax_details_table" />
+                        <br/>
+                        <p:dataTable value="#{invoiceBean.taxDetails}" var="tax_details" id="tax_details_table">
+                            <p:column headerText="Net Amount">
+                                <h:outputText value="#{tax_details.netAmount}" />
+                            </p:column>
+                            <p:column headerText="Tax Rate">
+                                <h:outputText value="#{tax_details.taxRate}" />
+                            </p:column>
+                            <p:column headerText="Tax Amount">
+                                <h:outputText value="#{tax_details.taxAmount}" />
+                            </p:column>
+                            <p:column headerText="Gross Amount">
+                                <h:outputText value="#{tax_details.grossAmount}" />
+                            </p:column>
+                            <p:column headerText="Tax Rate Name">
+                                <h:outputText value="#{tax_details.taxRateName}" />
+                            </p:column>
+                            <p:column>
+                                <p:commandLink value="Remove" action="#{invoiceBean.remove_taxdetail(tax_details)}" process="@this" update="@parent,tax_details_table,@form:tax_detail"/> |
+                                <p:commandLink value="Edit" action="#{invoiceBean.edit_taxdetail(tax_details)}" process="@this" update="@parent,tax_details_table,@form:tax_detail"/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:fieldset>
+                    <h:panelGrid columns="3">
+                        <p:fieldset legend="Summary">
+                            <p:panelGrid columns="2" id="pnl_summary">
+                                <p:outputLabel value="Net Amount" for="tin"/>
+                                <h:inputText value="#{invoiceBean.summary.netAmount}" id="netAmount" required="true"/>
+                                <p:outputLabel value="Tax Amount" for="taxAmount"/>
+                                <h:inputText value="#{invoiceBean.summary.taxAmount}" id="taxAmount" required="true"/>
+                                <p:outputLabel value="Gross Amount" for="grossAmount"/>
+                                <h:inputText value="#{invoiceBean.summary.grossAmount}" id="grossAmount" required="true"/>
+                                <p:outputLabel value="Item Count" for="itemCount"/>
+                                <h:inputText value="#{invoiceBean.summary.itemCount}" id="itemCount" required="true"/>
+                                <p:outputLabel value="Mode Code" for="modeCode"/>
+                                <p:selectOneMenu id="modeCode" value="#{invoiceBean.summary.modeCode}" style="width:125px" required="true">
+                                    <f:selectItem itemLabel="Online" itemValue="1" />
+                                    <f:selectItem itemLabel="Offline" itemValue="0" />
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Remarks" for="remarks"/>
+                                <h:inputText value="#{invoiceBean.summary.remarks}" id="remarks"/>
+                                <p:outputLabel value="QR Code" for="qrCode"/>
+                                <h:inputText value="#{invoiceBean.summary.qrCode}" id="qrCode"/>
+                            </p:panelGrid>
+                        </p:fieldset>
+                        <p:fieldset legend="Pay Way (Payment Mode)">
+                            <h:panelGrid columns="4" id="pnl_payment_mode">
+                                <p:outputLabel value="Payment Mode" for="paymentMode"/>
+                                <p:selectOneMenu id="paymentMode" value="#{invoiceBean.paymentmode.paymentMode}" style="width:125px" required="true">
+                                    <f:selectItem itemLabel="Credit" itemValue="101" />
+                                    <f:selectItem itemLabel="Cash" itemValue="102" />
+                                    <f:selectItem itemLabel="Cheque" itemValue="103" />
+                                    <f:selectItem itemLabel="Demand draft" itemValue="104" />
+                                    <f:selectItem itemLabel="Mobile money" itemValue="105" />
+                                    <f:selectItem itemLabel="Visa/Master card" itemValue="106" />
+                                    <f:selectItem itemLabel="EFT" itemValue="107" />
+                                    <f:selectItem itemLabel="POS" itemValue="108" />
+                                    <f:selectItem itemLabel="RTGS" itemValue="109" />
+                                    <f:selectItem itemLabel="Swift transfer" itemValue="110" />
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Payment Amount" for="paymentAmount"/>
+                                <h:inputText value="#{invoiceBean.paymentmode.paymentAmount}" id="paymentAmount" required="true"/>
+                                <p:outputLabel value="Order Number" for="orderNumber2"/>
+                                <h:inputText value="#{invoiceBean.paymentmode.orderNumber}" id="orderNumber2" required="true"/>
+                            </h:panelGrid>
+                            <br/>
+                            <p:commandButton value="Add Tax Details" action="#{invoiceBean.add_payway()}" process="@this,@parent" update="@form:pnl_payment_mode,@parent,payment_mode_table" />
+                            <br/>
+                            <p:dataTable value="#{invoiceBean.payWay}" var="payment_mode" id="payment_mode_table">
+                                <p:column headerText="Payment Mode">
+                                    <h:outputText value="#{payment_mode.paymentMode}" />
+                                </p:column>
+                                <p:column headerText="Amount">
+                                    <h:outputText value="#{payment_mode.paymentAmount}" />
+                                </p:column>
+                                <p:column headerText="Order Number">
+                                    <h:outputText value="#{payment_mode.orderNumber}" />
+                                </p:column>
+                                <p:column>
+                                    <p:commandLink value="Remove" action="#{invoiceBean.remove_payway (payment_mode)}" process="@this" update="@parent,payment_mode_table,@form:pnl_payment_mode"/> |
+                                    <p:commandLink value="Edit" action="#{invoiceBean.edit_payway(payment_mode)}" process="@this" update="@parent,payment_mode_table,@form:pnl_payment_mode"/>
+                                </p:column>
+                            </p:dataTable>
+                        </p:fieldset>
+                        <p:fieldset legend="Extended">
+                            <p:panelGrid columns="2" id="pnl_extended">
+                                <p:outputLabel value="Cancel Reason" for="reason"/>
+                                <h:inputText value="#{invoiceBean.extend.reason}" id="reason"/>
+                                <p:outputLabel value="Refund Reason Code" for="reasonCode"/>
+                                <h:inputText value="#{invoiceBean.extend.reasonCode}" id="reasonCode"/>
+                            </p:panelGrid>
+                        </p:fieldset>
+                    </h:panelGrid>
+                    <br/>
+                    <p:commandButton value="Submit Invoice" action="#{invoiceBean.submit_invoice()}" update="@form" process="@this,@form:pnl_extended,@form:pnl_summary,@form:pnl_basic,@form:pnl_buyer,@form:pnl_seller"/> 
+                    <p:commandButton value="Reset Form" action="#{invoiceBean.clear_all()}" update="@form" process="@this"/> 
+                    <br/>
+                    <br/>
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="returnCode" style="color: red; font-size: 16px"/>
+                        <p:outputLabel value="#{invoiceBean.returnCode}" style="color: red; font-size: 16px"/>
+                        <p:outputLabel value="returnMessage" style="color: red; font-size: 16px"/>
+                        <p:outputLabel value="#{invoiceBean.returnMessage}" style="color: red; font-size: 16px"/>
+                        <p:outputLabel value="Anti Fake Code" style="color: red; font-size: 16px"/>
+                        <p:outputLabel value="#{invoiceBean.antifakeCode}" style="color: red; font-size: 16px"/>
+                        <p:outputLabel value="Invoice Number" style="color: red; font-size: 16px"/>
+                        <p:outputLabel value="#{invoiceBean.invoiceNo}" style="color: red; font-size: 16px"/>
+                    </p:panelGrid>
+                </p:panel>
+            </h:form>
+        </f:view>
+        <p:ajaxStatus style="display:block;margin-bottom:2em;height:24px;">
+            <f:facet name="default">
+                <h:outputText value="Status: StandBy" rendered="false" />
+            </f:facet>
+
+            <f:facet name="start">
+
+            </f:facet>
+
+            <f:facet name="complete">
+                <h:outputText value="Status: Completed" rendered="false" />
+            </f:facet>
+        </p:ajaxStatus>
+
+        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+
+        <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+            <p:graphicImage name="/images/ajax-loader.gif" />
+        </p:dialog>
+    </h:body>
+</html>
+
